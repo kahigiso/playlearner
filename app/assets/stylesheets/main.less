@@ -1,0 +1,35 @@
+// -----------------------------------
+// MAIN
+// -----------------------------------
+// author: mda@zenexity.com - 2011
+// -----------------------------------
+
+@import 'libs/_reset';
+@import 'libs/_mate';
+@import 'libs/_theme';
+
+// ----------------------- MAIN STYLES
+body {
+    background: @mainBackground;
+    color: @mainColor;
+    font: @defaultFont;
+    -webkit-font-smoothing: antialised;
+    -webkit-user-select: none;
+}
+
+a {
+    color: @links;
+    text-decoration: none;
+    &:hover {
+        color: @linksHover;
+    }
+}
+
+// --------------------------- IMPORTS
+@import 'main/_layout';        // General grid
+@import 'main/_widgets';       // Some shared elements
+@import 'main/_drawer';        // Project drawer
+@import 'main/_header';        // Top header + User bar
+@import 'main/_breadcrumb';    // Breadcrumb + App menu
+@import 'apps/_tasks';         // Tasks
+
