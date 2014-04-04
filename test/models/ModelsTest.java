@@ -96,12 +96,20 @@ public class ModelsTest extends WithApplication{
         List<Project> janesProjects = Project.findInvolving("jane@example.com");
         assertEquals(3, janesProjects.size());
 
-        // Find all Jane's projects
+        // Find all Jeff's projects
         List<Project> jeffsProjects = Project.findInvolving("jeff@example.com");
         assertEquals(3, jeffsProjects.size());
 
         // Find all Bob's todo tasks
         List<Task> bobTasks = Task.findTodoInvolving("bob@example.com");
         assertEquals(4, bobTasks.size());
+
+        // Find all Jane's todo tasks
+        List<Task> janesTasks = Task.findTodoInvolving("jane@example.com");
+        assertEquals(3, janesTasks.size());
+
+        // Find all Jeff's todo tasks
+        List<Task> jeffsTasks = Task.findTodoInvolving("jeff@example.com");
+        assertEquals(2, jeffsTasks.size());
     }
 }

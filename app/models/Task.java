@@ -19,16 +19,17 @@ public class Task extends Model {
     @ManyToOne
     public User assignedTo;
     public String folder;
-    @ManyToMany
+    @ManyToOne
     public Project project;
 
-    public static Model.Finder<Long, Task> find = new Model.Finder(Long.class,Task.class);
+    public static Finder<Long, Task> find = new Finder(Long.class,Task.class);
 
-    public static List<Task> findTodoInvolving(String user){
-        return find.fetch("project")
+    public static List<Task> findTodoInvolving(String userEmail){
+        return find
+                .fetch("project")
                 .where()
+                .eq("project.members.email", userEmail)
                 .eq("done", false)
-                .eq("project.members.email", user)
                 .findList();
     }
 
