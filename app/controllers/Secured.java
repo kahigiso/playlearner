@@ -1,10 +1,8 @@
 package controllers;
 
-import play.*;
+import models.Project;
 import play.mvc.*;
 import play.mvc.Http.*;
-
-import models.*;
 
 /**
  * Created by Jean Kahigiso on 4/5/14.
@@ -19,4 +17,13 @@ public class Secured extends Security.Authenticator {
     public Result onUnauthorized(Context ctx) {
         return redirect(routes.Application.login());
     }
+
+    public static boolean isMemberOf(Long project) {
+        return Project.isMember(
+                project,
+                Context.current().request().username()
+        );
+    }
+
+
 }
